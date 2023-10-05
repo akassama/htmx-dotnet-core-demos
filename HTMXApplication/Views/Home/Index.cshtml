@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <div class="row">
+        <div class="col-12 mt-2">
+            <button class="btn btn-outline-info mb-1"
+                    hx-get="/api/text/get-message/Hello World!"
+                    hx-trigger="click"
+                    hx-target="#message-div"
+                    hx-swap="innerHTML">
+                Swap Message
+            </button>
+            <button class="btn btn-outline-success mb-1"
+                    hx-get="/api/text/set-message"
+                    hx-trigger="click"
+                    hx-target="#car-div"
+                    hx-swap="innerHTML">
+                Swap Cars
+            </button>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-12" id="message-div">
+        </div>
+        <div class="col-12" id="car-div">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-1">
+        Load Table Sample
+    </h3>
+    <div class="row mt-2">
+        <div class="col-12">
+            <a href="#" class="btn btn-success mr-1"
+                   hx-get="/api/load/load-table"
+                   hx-trigger="click"
+                   hx-target="#table-div"
+                   hx-swap="innerHTML">
+                Load Table
+            </a>
+
+            <a href="#" class="btn btn-success mr-1"
+                   hx-get="/api/load/load-table-data"
+                   hx-trigger="click"
+                   hx-target="#table-data-div"
+                   hx-swap="innerHTML">
+                Load Table Data with Export
+            </a>
+        </div>
+
+        <div class="col-12 mt-2" id="table-div" hx-on="htmx:afterSettle: reloadDataTable('.datatable')">
+        </div>
+
+        <div class="col-12 mt-2" id="default-div" hx-on="htmx:afterSettle: reloadDataTableExport('#datatableExport')">
+            <table id='datatableExport' class='text-start table table-bordered w-100' style="display:none;">
+                <thead>
+                    <tr>
+                        <th>Firstname</th>
+                        <th>Lastname</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody id="table-data-div">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function reloadDataTableExport(tableId)
+    {
+        //show table
+        $(tableId).show();
+
+        //set as datatable export
+        dataTable = $(tableId).DataTable({
+            "processing": true,
+            dom: 'lBfrtip',
+            buttons: ['excel', 'csv', 'pdf', 'copy'],
+            "lengthMenu": [10, 50, 100, 500, 1000, 2000, 5000, 10000],
+            "order": [],
+            "sScrollX": "100%",
+            "scrollCollapse": true
+        });
+
+        dataTable.buttons().container()
+            .appendTo(tableId+'_wrapper .col-md-6:eq(0)');
+
+        $(tableId+"_length").css("margin", "10px");
+    }
+
+    function reloadDataTable(tableId)
+    {
+        //set as datatable
+        $(tableId).dataTable();
+    }
+</script>

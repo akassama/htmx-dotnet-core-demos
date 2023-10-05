@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-1">
+        Load Image
+    </h3>
+    <div class="row mt-2">
+        <div class="col-12 mb-2">
+            <button type="button" class="btn btn-outline-danger float-end" 
+                    hx-get="/api/load/load-image"
+                    hx-trigger="click"
+                    hx-target="#image-div"
+                    hx-swap="innerHTML">
+                Reload Image
+        </button>
+        </div>
+        <div class="col-12 text-center" id="image-div"
+             hx-get="/api/load/load-image"
+             hx-trigger="load">
+             <!--temp loader-->
+            <img src="~/img/loading.gif" class="img-fluid" alt="Loading indicator">
+        </div>
+    </div>
+</div>

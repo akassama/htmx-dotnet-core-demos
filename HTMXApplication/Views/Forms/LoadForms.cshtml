@@ -1,0 +1,64 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-1">
+        Load Form
+    </h3>
+    <div class="row mt-2">
+        <div class="col-12">
+            <a href="#" class="btn btn-success mr-1"
+               hx-get="/api/form/load-form"
+               hx-trigger="click"
+               hx-target="#form-div"
+               hx-swap="innerHTML">
+                Load JS Validate Form
+            </a>
+
+            <a href="#" class="btn btn-success mr-1"
+               hx-get="/api/form/load-bs-form"
+               hx-trigger="click"
+               hx-target="#bs-form-div"
+               hx-swap="innerHTML">
+                Load BS5 Form Validation
+            </a>
+        </div>
+
+    </div>
+    <div class="col-12 mt-2" id="form-div" hx-on="htmx:afterSettle: loadValidationForm('.form-validation')">
+    </div>
+    <div class="col-12 mt-2" id="bs-form-div" hx-on="htmx:afterSettle: loadBSValidationForm('.needs-validation')">
+    </div>
+</div>
+
+<script>
+    function loadValidationForm(formId) {
+        //set jquery validation
+        $(formId).validate({
+            errorClass: "text-danger"
+        });
+    }
+    function loadBSValidationForm(formId) {
+        //set bs form validation
+        (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll(formId)
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })();
+    }
+</script>
