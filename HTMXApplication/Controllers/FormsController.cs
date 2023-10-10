@@ -9,8 +9,15 @@ namespace HTMXApplication.Controllers
         {
             return View();
         }
+
         [HttpGet("forms/load-forms")]
         public IActionResult LoadForms()
+        {
+            return View();
+        }
+
+        [HttpGet("forms/counters")]
+        public IActionResult Counters()
         {
             return View();
         }

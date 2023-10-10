@@ -38,6 +38,9 @@
         $(formId).validate({
             errorClass: "text-danger"
         });
+
+        //remove bs form if existing
+        $("#bs-form-div").html("");
     }
     function loadBSValidationForm(formId) {
         //set bs form validation
@@ -60,5 +63,8 @@
                     }, false)
                 })
         })();
+
+        //remove js form if existing
+        $("#form-div").html("");
     }
 </script>

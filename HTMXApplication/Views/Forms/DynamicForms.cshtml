@@ -14,8 +14,8 @@
                     <label>Make</label>
                     <select class="form-select" 
                         name="make" 
-                        hx-get="/api/form/models" 
-                        hx-target="#models" 
+                        hx-get="/api/form/get-car-models" 
+                        hx-target="#car-models" 
                         hx-indicator=".htmx-indicator">
                         <option value="audi">Audi</option>
                         <option value="toyota">Toyota</option>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="mb-3">
                     <label>Model</label>
-                    <select class="form-select" id="models" name="model">
+                    <select class="form-select" id="car-models" name="car-model">
                         <option value="a1">A1</option>
                         <option value="a3">A3</option>
                         <option value="a6">A6</option>

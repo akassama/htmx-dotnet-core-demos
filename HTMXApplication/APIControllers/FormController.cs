@@ -9,6 +9,8 @@ namespace HTMXApplication.APIControllers
     [ApiController]
     public class FormController : ControllerBase
     {
+		public static int counter = 0;
+
         [HttpGet("load-form")]
         public IActionResult LoadForm()
         {
@@ -207,6 +209,26 @@ namespace HTMXApplication.APIControllers
             return Ok(elementInput);
         }
 
+        [HttpGet("get-car-models")]
+        public IActionResult GetModels(string make)
+        {
+            string models;
+
+            if (make.ToLower() == "audi")
+            {
+                models = $@"<option value='a1'>A1</option> <option value='a4'>A4</option> <option value='a6X5'>A6</option> ";
+            }
+            else if (make.ToLower() == "toyota")
+            {
+                models = $@"<option value='landcruiser'>Landcruiser</option> <option value='takoma'>Takoma</option> <option value='yaris'>Yaris</option> ";
+            }
+            else
+            {
+                models = $@"<option value='325i'>325i</option> <option value='325ix'>325ix</option> <option value='X5'>X5</option> ";
+            }
+            return Ok(models);
+        }
+
         [HttpPost("set-other-input")]
         public IActionResult SetOtherInput() 
         {
@@ -373,24 +395,15 @@ namespace HTMXApplication.APIControllers
         }
 
 
-        [HttpGet("models")]
-        public IActionResult GetModels(string make) 
+        [HttpPost("get-counter")]
+        public IActionResult GetCounter()
         {
-            string models;
+            string getCounter = (string)HttpContext.Request.Form["counter-Value"] ?? counter.ToString();
+			int currentCounter = Int32.Parse(getCounter);
 
-            if (make.ToLower() == "audi")
-            {
-                models = $@"<option value='a1'>A1</option> <option value='a4'>A4</option> <option value='a6X5'>A6</option> ";
-            }
-            else if (make.ToLower() == "toyota")
-            {
-                models = $@"<option value='landcruiser'>Landcruiser</option> <option value='takoma'>Takoma</option> <option value='yaris'>Yaris</option> ";
-            }
-            else
-            {
-                models = $@"<option value='325i'>325i</option> <option value='325ix'>325ix</option> <option value='X5'>X5</option> ";
-            }
-            return Ok(models);
+            string counterResult = $@"<span class='text-dark h1'>{currentCounter++}</span>";
+
+            return Ok(counterResult);
         }
 
     }

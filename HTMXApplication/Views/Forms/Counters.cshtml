@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-1">
+        Counters
+    </h3>
+    <div class="row mt-2">
+        <div class="col-12">
+            <a href="#" class="btn btn-danger mr-1"
+               hx-post="/api/form/get-counter"
+               hx-trigger="click"
+               hx-target="#counter-div"
+               hx-swap="innerHTML">
+                <i class="bi bi-dash-circle"></i>
+                Decrement
+            </a>
+
+            <a href="#" class="btn btn-primary mr-1"
+               hx-post="/api/form/get-counter"
+               hx-trigger="click"
+               hx-target="#counter-div"
+               hx-swap="innerHTML">
+                <i class="bi bi-plus-square-fill"></i>
+                Increment
+            </a>
+        </div>
+
+    </div>
+    <div class="col-12 mt-2 text-lead" id="counter-div">
+        <span class="text-dark h1">
+            0
+        </span>
+    </div>
+</div>
+
+<script>
+
+</script>
