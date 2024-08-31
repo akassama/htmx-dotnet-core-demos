@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Form Table";
+
+    //get users data
+    var Model = dbContext.Users.Where(x => !x.DeleteStatus).OrderByDescending(o => o.CreatedAt).ToList();
+}
+
+<div class="container-fluid">
+    <form>
+    <div class="row mt-2">
+        <div class="col-12 justify-content-end d-flex mb-2">
+                @* <button type="button" class="btn btn-dark"
+                        hx-post="/htmx-form/add-user"
+                        hx-trigger="click"
+                        hx-target="#table-data"
+                        hx-swap="innerHTML">
+                    Save
+                </button> *@
+        </div>
+        <div class="col-12">
+            <table class="table table-bordered datatable">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Gender
+                        </th>
+                        <th>
+                            Phone Number
+                        </th>
+                        <th>
+                            D.O.B
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="table-data">
+                        @await Html.PartialAsync("_TableFormData", Model)
+                        @* @AppServices.GetUsersTableData() *@
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </form>
+</div>
+
+
+<hr />
+<div class="row mt-5">
+    <form action="/" method="post">
+        <input type="text" value="" class="form-control" />
+    </form>
+</div>

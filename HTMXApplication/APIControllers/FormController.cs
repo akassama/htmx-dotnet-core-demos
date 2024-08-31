@@ -347,7 +347,7 @@ namespace HTMXApplication.APIControllers
 
             if (answer.ToLower() == "yes")
             {
-                input = $@"<button type='submit' id='Continue' class='btn btn-primary mt-3'>Save</button>";
+                input = $@"<button type='submit' id='Continue' class='btn btn-primary mt-3'>Continue</button>";
             }
             return Ok(input);
         }

@@ -1,0 +1,61 @@
+﻿@model List<UsersModel>
+
+<tr>
+    <td>
+        <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter name" required>
+    </td>
+    <td>
+        <input type="text" class="form-control" id="Email" name="Email" placeholder="Enter email" required>
+    </td>
+    <td>
+        <select class="form-select" id="Gender" name="Gender" required>
+            <option value="">Select value</option>
+            <option value="F">Female</option>
+            <option value="M">Male</option>
+        </select>
+    </td>
+    <td>
+        <input type="number" class="form-control" minlength='7' id="PhoneNumber" name="PhoneNumber" placeholder="Enter phone number" required>
+    </td>
+    <td>
+        <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" placeholder="Enter d.o.b" required>
+    </td>
+    <td>
+        <button type="button" class="btn btn-dark"
+                hx-post="/htmx-form/add-user"
+                hx-trigger="click"
+                hx-target="#table-data"
+                hx-swap="innerHTML">
+            Save
+        </button>
+    </td>
+</tr>
+
+@foreach (var item in Model)
+{
+    <tr id="tr-@item.UserID">
+        <td>@item.Name</td>
+        <td>@item.Email</td>
+        <td>@item.Gender</td>
+        <td>@item.PhoneNumber</td>
+        <td>@item.DateOfBirth?.ToString("yyyy-MM-dd")</td>
+        <td>
+            <!-- Add Edit and Delete buttons -->
+            <button type="button" class="btn btn-success mb-1"
+                    hx-get="/htmx-form/edit-user/@item.UserID"
+                    hx-trigger="click"
+                    hx-target="#tr-@item.UserID"
+                    hx-swap="innerHTML">
+                Edit
+            </button>
+            <button type="button" class="btn btn-danger mb-1"
+                    hx-get="/htmx-form/remove-user/@item.UserID"
+                    hx-trigger="click"
+                    hx-confirm="Are you sure you wish to remove user?"
+                    hx-target="#tr-@item.UserID"
+                    hx-swap="innerHTML">
+                Remove
+            </button>
+        </td>
+    </tr>
+}

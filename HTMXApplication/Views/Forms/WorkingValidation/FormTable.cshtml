@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Form Table";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-1">
+        Form Table
+    </h3>
+
+    <form asp-controller="forms" asp-action="add-user" method="post" class="row g-3 needs-validation" novalidate>
+    <div class="row mt-2">
+        <div class="col-12 justify-content-end d-flex mb-2">
+            <button type="button" class="btn btn-dark">Save</button>
+        </div>
+        <div class="col-12">
+            <table class="table table-bordered datatable">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            Gender
+                        </th>
+                        <th>
+                            Phone Number
+                        </th>
+                        <th>
+                            D.O.B
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <partial name="~/Views/Forms/_TableFormData.cshtml" />
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </form>
+</div>

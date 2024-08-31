@@ -1,4 +1,10 @@
+using HTMXApplication.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Database service
+builder.Services.AddDbContext<DataConnection>(con => con.UseSqlServer(builder.Configuration.GetConnectionString("DataConnection")));
 
 //set route controller name as lower-case
 builder.Services.AddRouting(options => options.LowercaseUrls = true);

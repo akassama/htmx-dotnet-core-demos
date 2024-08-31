@@ -26,9 +26,10 @@
         </div>
 
     </div>
-    <div class="col-12 mt-2" id="form-div" hx-on="htmx:afterSettle: loadValidationForm('.form-validation')">
+    
+    <div class="col-12 mt-2" id="form-div" hx-on:htmx:after-settle="loadValidationForm('.form-validation')">
     </div>
-    <div class="col-12 mt-2" id="bs-form-div" hx-on="htmx:afterSettle: loadBSValidationForm('.needs-validation')">
+    <div class="col-12 mt-2" id="bs-form-div" hx-on:htmx:after-settle="loadBSValidationForm('.needs-validation')">
     </div>
 </div>
 

@@ -25,10 +25,10 @@
             </a>
         </div>
 
-        <div class="col-12 mt-2" id="table-div" hx-on="htmx:afterSettle: reloadDataTable('.datatable')">
+        <div class="col-12 mt-2" id="table-div" hx-on:htmx:after-settle="reloadDataTable('.datatable')">
         </div>
 
-        <div class="col-12 mt-2" id="default-div" hx-on="htmx:afterSettle: reloadDataTableExport('#datatableExport')">
+        <div class="col-12 mt-2" id="default-div" hx-on:htmx:after-settle="reloadDataTableExport('#datatableExport')">
             <table id='datatableExport' class='text-start table table-bordered w-100' style="display:none;">
                 <thead>
                     <tr>

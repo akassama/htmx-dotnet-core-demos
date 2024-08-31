@@ -1,0 +1,67 @@
+﻿@{
+    var data = dbContext.Users.Where(x => !x.DeleteStatus).OrderByDescending(o => o.CreatedAt);
+}
+
+<tr>
+    <td>
+        <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter name" required>
+        <div class="invalid-feedback">
+            Please provide name
+        </div>
+    </td>
+    <td>
+        <input type="text" class="form-control" id="Email" name="Email" placeholder="Enter email" required>
+        <div class="invalid-feedback">
+            Please provide email
+        </div>
+    </td>
+    <td>
+        <select class="form-select" id="Gender" name="Gender" required>
+            <option value="">Select value</option>
+            <option value="F">Female</option>
+            <option value="M">Male</option>
+        </select>
+        <div class="invalid-feedback">
+            Please provide gender
+        </div>
+    </td>
+    <td>
+        <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" placeholder="Enter phone number" required>
+        <div class="invalid-feedback">
+            Please provide phone number
+        </div>
+    </td>
+    <td>
+        <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" placeholder="Enter d.o.b" required>
+        <div class="invalid-feedback">
+            Please provide date of birth
+        </div>
+    </td>
+    <td>
+        <input type="submit" class="btn btn-success" value="Save">
+    </td>
+</tr>
+
+@foreach (var item in data)
+{
+
+    <tr>
+        <td>
+            @item.Name
+        </td>
+        <td>
+            @item.Email
+        </td>
+        <td>
+            @item.Gender
+        </td>
+        <td>
+            @item.PhoneNumber
+        </td>
+        <td>
+            @item.DateOfBirth
+        </td>
+        <td>
+        </td>
+    </tr>
+}

@@ -89,13 +89,12 @@
                 </div>
 
                 <div class="mb-3 mt-3">
-                    <label for="continue_form">Do you wish to continue? <small class="text-muted">(Type 'email@example.com' to continue)</small></label>
+                    <label for="continue_form">Do you wish to continue? <small class="text-muted">(Type 'yes' to continue)</small></label>
                     <input type="text" class="form-control" id="continue_form" name="continue_form"
                            hx-post="/api/form/check-continue-answer"
-                           hx-trigger="keyup changed delay:500ms"
+                           hx-trigger="keyup changed delay:250ms"
                            hx-target="#get-continue-button"
-                           hx-swap="innerHTML"
-                           hx-indicator=".htmx-indicator">
+                           hx-swap="innerHTML">
                 </div>
 
                 <div class="mb-3 mt-3">
@@ -108,6 +107,8 @@
                            hx-indicator=".htmx-indicator">
                 </div>
                 <div id="existing-email-error">
+                </div>
+                <div id="get-continue-button">
                 </div>
             </form>
         </div>
