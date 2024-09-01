@@ -9,7 +9,7 @@
     <div class="row mt-2">
         <div class="col-12">
             <a href="#" class="btn btn-danger mr-1"
-               hx-post="/api/form/get-counter"
+               hx-post="/forms/reduce-count"
                hx-trigger="click"
                hx-target="#counter-div"
                hx-swap="innerHTML">
@@ -18,7 +18,7 @@
             </a>
 
             <a href="#" class="btn btn-primary mr-1"
-               hx-post="/api/form/get-counter"
+               hx-post="/forms/add-count"
                hx-trigger="click"
                hx-target="#counter-div"
                hx-swap="innerHTML">
@@ -35,6 +35,17 @@
     </div>
 </div>
 
-<script>
-
-</script>
+<div class="container-fluid">
+    <h3 class="text-dark mb-1">
+        Pulse/Poll
+    </h3>
+    <div class="col-12 mt-2 text-lead" id="counter-div">
+        <span class="text-dark h1">
+            Total Users : <span class="danger" hx-get="/forms/get-total-user"
+                                hx-trigger="load delay:1s"
+                                hx-swap="outerHTML">
+                                Loading...
+                          </span>
+        </span>
+    </div>
+</div>

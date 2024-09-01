@@ -1,0 +1,28 @@
+﻿@model UsersModel
+
+@{
+    ViewData["Title"] = "Form Table";
+}
+
+<div class="container-fluid">
+    <div class="row mt-2">
+        <div class="col-12">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            @*          
+                @if(TempData["ErrorMsg"] != null)
+            {
+                <div class="text-danger">
+                    @TempData["ErrorMsg"]
+                </div>
+            } 
+            *@
+            <form hx-post="/forms/new-user" hx-target="#result" class="g-3 needs-validation" novalidate autocomplete="off" enctype="multipart/form-data">
+                <div class="row" id="result">
+                    <!--Content-->
+                    @await Html.PartialAsync("_FormInputs", Model)
+                </div>
+			</form>
+
+        </div>
+    </div>
+</div>

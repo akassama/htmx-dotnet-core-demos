@@ -1,0 +1,81 @@
+﻿@model UsersModel
+
+<div class="col-md-6 mb-3">
+	<label class="form-label" asp-for="Name" data-mdb-toggle="tooltip" title="Provide @Html.DisplayNameFor(x=> x.Name).ToLower()">
+	</label>
+	<input type="text" asp-for="Name" class="form-control" maxlength="100" required />
+	<div class="text-danger w-100">
+		<span asp-validation-for="Name"></span>
+	</div>
+	<div class="invalid-feedback">
+		Please provide @Html.DisplayNameFor(x => x.Name).ToLower()
+	</div>
+</div>
+
+<div class="col-md-6 mb-3">
+	<label class="form-label" asp-for="Email" data-mdb-toggle="tooltip" title="Provide @Html.DisplayNameFor(x=> x.Email).ToLower()">
+	</label>
+	<input type="email" asp-for="Email" class="form-control" maxlength="50" required />
+	<div class="text-danger w-100">
+		<span asp-validation-for="Email"></span>
+	</div>
+	<div class="invalid-feedback">
+		Please provide @Html.DisplayNameFor(x => x.Email).ToLower()
+	</div>
+</div>
+
+<div class="col-md-6 mb-3">
+	<label class="form-label" asp-for="Gender" data-mdb-toggle="tooltip" title="Provide @Html.DisplayNameFor(x=> x.Gender).ToLower()">
+	</label>
+	<select class="form-select" asp-for="Gender" required>
+		<option value="">Select answer</option>
+		<option value="F">Female</option>
+		<option value="M">Male</option>
+	</select>
+	<div class="text-danger w-100">
+		<span asp-validation-for="Gender"></span>
+	</div>
+	<div class="invalid-feedback">
+		Please provide @Html.DisplayNameFor(x => x.Gender).ToLower()
+	</div>
+</div>
+
+<div class="col-md-6 mb-3">
+	<label class="form-label" asp-for="PhoneNumber" data-mdb-toggle="tooltip" title="Provide @Html.DisplayNameFor(x=> x.PhoneNumber).ToLower()">
+	</label>
+	<input type="text" asp-for="PhoneNumber" class="form-control" maxlength="20" required />
+	<div class="text-danger w-100">
+		<span asp-validation-for="PhoneNumber"></span>
+	</div>
+	<div class="invalid-feedback">
+		Please provide @Html.DisplayNameFor(x => x.PhoneNumber).ToLower()
+	</div>
+</div>
+
+<div class="col-md-6 mb-3">
+	<label class="form-label" asp-for="DateOfBirth" data-mdb-toggle="tooltip" title="Provide @Html.DisplayNameFor(x=> x.DateOfBirth).ToLower()">
+	</label>
+	<input type="date" asp-for="DateOfBirth" class="form-control past-datepicker" required />
+	<div class="text-danger w-100">
+		<span asp-validation-for="DateOfBirth"></span>
+	</div>
+	<div class="invalid-feedback">
+		Please provide @Html.DisplayNameFor(x => x.DateOfBirth).ToLower()
+	</div>
+</div>
+
+<div class="row">
+	<!--Hidden Inputs-->
+	<div class="col-12">
+		<input type="hidden" asp-for="UserID" value="@Guid.NewGuid()" class="form-control" />
+	</div>
+</div>
+
+<div class="col-auto mt-5">
+	<a asp-action="table" asp-controller="forms" class="btn btn-light rounded-pill mb-2 mr-2">
+		<i class="ri-arrow-left-line"></i> Back
+	</a>
+	<button type="submit" class="btn btn-primary bg-blue save-btn rounded-pill mb-2 mr-2">
+		<i class="ri-save-2-line"></i> Save
+	</button>
+</div>

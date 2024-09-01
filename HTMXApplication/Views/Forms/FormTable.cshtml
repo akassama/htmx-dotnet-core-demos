@@ -9,13 +9,9 @@
     <form>
     <div class="row mt-2">
         <div class="col-12 justify-content-end d-flex mb-2">
-                @* <button type="button" class="btn btn-dark"
-                        hx-post="/htmx-form/add-user"
-                        hx-trigger="click"
-                        hx-target="#table-data"
-                        hx-swap="innerHTML">
-                    Save
-                </button> *@
+                <a asp-controller="forms" asp-action="new-user">
+                    New User
+                </a>
         </div>
         <div class="col-12">
             <table class="table table-bordered datatable">
@@ -48,13 +44,5 @@
             </table>
         </div>
     </div>
-    </form>
-</div>
-
-
-<hr />
-<div class="row mt-5">
-    <form action="/" method="post">
-        <input type="text" value="" class="form-control" />
     </form>
 </div>

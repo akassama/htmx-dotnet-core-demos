@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-1">
+        Chat/Modals
+    </h3>
+    <div class="row mt-2">
+        <div class="col-12">
+            <button class="btn btn-outline-dark" 
+                    hx-get="/forms/open-modal/m102030"
+                    hx-target="#m102030"
+                    hx-swap="innerHTML"
+                    hx-trigger="click">
+                Open Modal
+            </button>
+
+            <div id="m102030">
+                <!--Content-->
+            </div>
+
+        </div>
+    </div>
+</div>

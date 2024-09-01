@@ -11,20 +11,25 @@ namespace HTMXApplication.Models
         public Guid UserID { get; set; }
 
         [Display(Name = "Name")]
+        [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; } = null!;
 
         [Display(Name = "Email")]
+        [Required(ErrorMessage = "Email is required")]
         public string Email { get; set; } = null!;
 
         [Display(Name = "Gender")]
+        [Required(ErrorMessage = "Gender is required")]
         public string? Gender { get; set; } = string.Empty;
 
         [Display(Name = "Phone Number")]
+        [Required(ErrorMessage = "Phone is required")]
         public string? PhoneNumber { get; set; } = null;
 
         [Display(Name = "Date of Birth")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [Required(ErrorMessage = "D.O.B is required")]
         public DateTime? DateOfBirth { get; set; } = null;
 
         [Display(Name = "Delete Status")]

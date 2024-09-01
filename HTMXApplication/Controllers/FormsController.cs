@@ -23,12 +23,6 @@ namespace HTMXApplication.Controllers
             return View();
         }
 
-        [HttpGet("forms/counters")]
-        public IActionResult Counters()
-        {
-            return View();
-        }
-
         [HttpGet("forms/table")]
         public IActionResult FormTable()
         {
@@ -54,6 +48,39 @@ namespace HTMXApplication.Controllers
 
                 return RedirectToAction("table", "forms");   
             }
+
+            return View(user);
+        }
+
+        [HttpGet("forms/new-user")]
+        public IActionResult NewUserForm()
+        {
+            return View();
+        }
+
+        [HttpPost("forms/new-user")]
+        public IActionResult NewUserForm(UsersModel user)
+        {
+            if (ModelState.IsValid)
+            {
+                user.UserID = Guid.NewGuid();
+                _dataConnection.Add(user);
+                _dataConnection.SaveChanges();
+
+                return RedirectToAction("table", "forms");
+            }
+
+            var errorMessage = "";
+
+            foreach (var item in ModelState.Values)
+            {
+                foreach (var modelError in item.Errors)
+                {
+                    errorMessage += "\n" + "Error: " + modelError.ErrorMessage;
+                }
+            }
+
+            TempData["ErrorMsg"] = errorMessage;
 
             return View(user);
         }
